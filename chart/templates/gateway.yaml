@@ -2,6 +2,7 @@
 {{- required "`gateway` value has been deprecated.  Please use the new format in the `gateways` value." "" }}
 {{- end }}
 
+{{- if .Values.gateways }}
 {{- range $name, $values := .Values.gateways }}
 ---
 apiVersion: networking.istio.io/v1beta1
@@ -22,4 +23,5 @@ spec:
     tls:
       httpsRedirect: true
     {{- tpl (toYaml $values.servers) $ | nindent 2 }}
+{{- end }}
 {{- end }}

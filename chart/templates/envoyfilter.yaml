@@ -6,6 +6,7 @@ For **most** browsers, the 421 error will force it to retry the request without 
 
 NOTE: This workaround relies on Envoy v1.18.x and above, which is included in istio/proxyv2 1.10.x and above
 */}}
+{{- if not .Values.revision }}
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
@@ -40,3 +41,4 @@ spec:
                     end
                   end
                 end
+{{- end }}
