@@ -67,7 +67,7 @@ ingressGateways:
 
 # See https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway for spec
 gateways:
-  main: # This becomes the name of the gateway
+  public: # This becomes the name of the gateway
     selector:
       app: "istio-ingressgateway"
     servers:  # HTTP redirect to HTTPS is automatically added
@@ -78,7 +78,7 @@ gateways:
         number: 8443
         protocol: HTTPS
       tls:
-        credentialName: "wildcard-cert"
+        credentialName: "public-cert"
         mode: "SIMPLE"
   # # Example of adding additional gateways
   # private:
